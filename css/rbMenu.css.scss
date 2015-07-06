@@ -1,0 +1,409 @@
+/*!
+ * rb-Nav Angular Responsive Mobile Menu v1.0
+ * (c) 2015 Roy Bottomley
+ * licensed under MIT
+ */
+$dropdown-anchor-color: white;
+$text-color: white;
+$dropdown-background: black;
+$hover-color: #FFF;
+$hover-background: #CCC;
+$border-color: white;
+$icon-bar-color: #FFF;
+
+
+.rb-nav_right-btn-holder{float: right;} ;
+.rb-nav_left-btn-holder{float: left;} ;
+.rb-nav_right-dropdown{right: 0%; } ;
+.rb-nav_left-dropdown{left: 0%; } ;
+.rb-nav_divider{ border-bottom: 1px dashed $border-color;}
+
+.rb-nav_btn_holder{
+  display: block;
+  line-height: 1.188em;
+  background: $dropdown-background;
+  padding: 2px;
+  cursor: pointer;
+
+  .rb-nav_icon-bar {
+    margin-top: 0.188em;
+    display: block;
+    width: 1.125em;
+    height: 0.125em;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    background-color: $icon-bar-color;
+  };
+  .rb-nav_btn {
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+  .rb-nav_btn-img {
+    @extend .rb-nav_btn;
+  }
+  .rb-nav_btn-default {
+    @extend .rb-nav_btn;
+    padding: 0.438em 0.625em 0.625em 0.625em;
+    line-height: 1.125em;
+    background-color: $dropdown-background;
+  }
+}
+
+.rb-nav_menu:before {
+  content: " ";
+  display: table;
+}
+
+.rb-nav_menu:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.rb-nav_menu {
+  display: block;
+  background-color: transparent;
+}
+
+.rb-nav_menu_dropdown_holder {
+  display: block;
+  position: relative;
+  clear: both;
+}
+
+.rb-nav_menu_dropdown {
+  display: block;
+  padding-right: 0.438em ;
+  background-color: $dropdown-background ;
+  position: absolute;
+  font-size: 0.875em;
+
+  top: 0%;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+
+  list-style: none;
+  overflow: hidden;
+  cursor: pointer;
+
+  ul {
+    list-style-type: none;
+    display: block;
+    margin: 0px;
+    padding: 0.625em;
+    font-size: inherit;
+    ul {
+      font-size: inherit;
+      margin-left: 0.625em;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+
+  .rb-nav-menu-item {
+    display: block;
+    line-height: 1.6em;
+    white-space: nowrap;
+    margin: 2px 5px;
+    padding: 2px 10px;}
+
+  li {color: $text-color}
+  li a {color: $dropdown-anchor-color}
+  li a:hover {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background: $hover-background;
+    color: $hover-color; }
+}
+
+$topbar-background: black;
+$topbar-color: white;
+// beware if place this directive in a container with a position other than static set that containers z-index property as it forms a new stacking contect
+//http://philipwalton.com/articles/what-no-one-told-you-about-z-index/
+.rb-nav_top-bar-holder {
+  z-index: 1000;
+  color: $topbar-color;
+  background: $topbar-background;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.875em;
+
+  .rb-nav_float-right{display: table-cell; vertical-align: top;}
+  .rb-nav_float-left{display: table-cell; vertical-align: top;}
+  .rb-nav_center{
+    display: block;
+    margin: 0px auto 0px auto;
+    padding-left: 10px;
+    width:100%;
+    vertical-align: top;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    //    text-align: center
+  }
+
+  nav {
+    margin: 0px auto 0px auto;
+    max-width: 62.5rem;
+    position: relative;
+    cursor: pointer;
+    display: table;
+    width: 100%;
+    height: 45px;
+    white-space:nowrap;
+    font-size: inherit;
+
+    ul {
+      list-style-type: none;
+      cursor: pointer;
+      margin: 0px auto 0px auto;
+      height: 45px;
+      font-size: inherit;
+      li a {
+        cursor: pointer;
+        color: $topbar-color ;
+        padding: 0 10px;
+        display: block;
+        position: relative;
+      }
+
+      li:hover {
+        .rb-nav_topbar-dropdown {
+          display: block;
+        }
+      }
+
+      li a:hover {
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        background: $hover-background;
+        color: $hover-color;
+        .rb-nav_topbar-dropdown {
+          display: inline-block;
+        }
+      }
+
+      li {
+        cursor: pointer;
+        display: inline-block;
+        margin: auto 5px;
+        color: $topbar-color;
+        background: $topbar-background;
+        position: relative;  // so that position absolute of  .rb-nav_topbar-dropdown is realtive to this class
+        height: 45px;
+        line-height: 45px;
+        vertical-align: top;
+
+        .rb-nav_topbar-dropdown {
+          background-color: $topbar-background;
+          position: absolute;
+          display: none;
+          top: 100%;
+          left: 0%;
+          margin: 0;
+          padding: 0;
+          overflow: visible;
+          clear:both;
+
+          ul {
+            display: block;
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            padding-left: 0px;
+            height: 2em;
+            line-height: 2em;
+            font-size: inherit;
+            li {
+              display: block;
+              margin: 0px;
+              padding: 0px;
+              width: 100%;
+              height: auto;
+              line-height: 2em;
+            }
+
+            li:hover>.rb-nav_sub-menu {
+              >ul { display: block }
+            }
+
+            li a:hover>.rb-nav_sub-menu {
+              >ul { display: block ; }
+            }
+
+            ul {
+              display: none;
+              background-color:  $topbar-background;
+              position: absolute;
+              left: 100%;
+              top: 0%;
+            }
+          }
+
+          .rb-nav-menu-item {
+            display: block;
+            line-height: 1.6em;
+            white-space: nowrap;
+            margin: 0;
+            padding: 2px 10px;
+            overflow: visible;
+
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.rb-nav_image {
+  padding-right: 2px;
+}
+.rb-nav_tooltip.ng-enter  {
+  -webkit-transition: 0.5s cubic-bezier(1,-0.54,1, 0.38) all;
+  -moz-transition: 0.5s cubic-bezier(1,-0.54,1, 0.38) all;
+  -ms-transition: 0.5s cubic-bezier(1,-0.54,1, 0.38) all;
+  -o-transition: 0.5s cubic-bezier(1,-0.54,1, 0.38) all;
+  transition: 0.5s cubic-bezier(1,-0.54,1, 0.38) all;
+}
+
+.rb-nav_tooltip.ng-enter {
+  max-height: 0;
+  opacity: 0;
+}
+.rb-nav_tooltip.ng-enter.ng-enter-active {
+  max-height: 999px;
+  max-width: 999px;
+  opacity:0.8;
+}
+.rb-nav_tooltip.ng-leave {
+  max-height: 999px;
+  max-width: 999px;
+  opacity:0.8;
+}
+.rb-nav_tooltip.ng-leave.ng-leave-active {
+  max-height: 0;
+  max-width: 0;
+  opacity:0;
+}
+
+.dropdown-animate-left.ng-enter,  {
+  -webkit-animation:0.5s slideInLeft ease;
+}
+.dropdown-animate-right.ng-enter,  {
+  -webkit-animation:0.5s slideInRight ease;
+}
+
+.dropdown-animate-left.ng-leave,
+.dropdown-animate-right.ng-leave {
+  -webkit-transition: 0.25s linear all;
+  -moz-transition: 0.25s linear all;
+  -ms-transition: 0.25s linear all;
+  -o-transition: 0.25s linear all;
+  transition: 0.25s linear all;
+}
+
+.dropdown-animate-left.ng-enter,
+.dropdown-animate-right.ng-enter {
+  max-height: 0;
+  opacity: 0;
+}
+
+.dropdown-animate-left.ng-enter.ng-enter-active,
+.dropdown-animate-right.ng-enter.ng-enter-active {
+  max-height: 999px;
+  max-width: 999px;
+  opacity:1;
+}
+
+.dropdown-animate-left.ng-leave,
+.dropdown-animate-right.ng-leave {
+  max-height: 999px;
+  max-width: 999px;
+  opacity:1;
+}
+
+.dropdown-animate-left.ng-leave.ng-leave-active,
+.dropdown-animate-right.ng-leave.ng-leave-active {
+  max-height: 0;
+  max-width: 0;
+  opacity:1;
+}
+
+
+
+//.rb-nav_tooltip {
+//  position: absolute;
+//  width:140px;
+//  color: #FFFFFF;
+//  background: #2e2e2e;
+//  height: 30px;
+//  line-height: 30px;
+//  text-align: center;
+//  border-radius: 6px;
+//  margin-left: -20px;
+//  margin-top: 5px;
+//  text-decoration: none;
+//}
+//.rb-nav_tooltip:after {
+//  content: '';
+//  position: absolute;
+//  bottom: 100%;
+//  left: 20%;
+//  margin-left: -8px;
+//  width: 0; height: 0;
+//  border-bottom: 8px solid #2e2e2e;
+//  border-right: 8px solid transparent;
+//  border-left: 8px solid transparent;
+//}
+
+/*a.rb-nav_tooltip > span:hover,*/
+//.rb-nav-menu-item:hover  {
+//  .rb-nav_tooltip  {
+//  opacity: 1;
+//  text-decoration: none;
+//  visibility: visible;
+//  overflow: visible;
+//  display: block;
+//  }
+//}
+
+.rb-nav_tooltip {
+  z-index: 1010;
+  position: absolute;
+  .rb-nav_tooltip-arrow {
+    z-index: 1010;
+    width: 15px;
+    height: 15px;
+    margin-left: 20px;
+    margin-top: -2px;
+    position: absolute;
+    background: #555555;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .rb-nav_tooltip-text {
+    border-radius: 3px;
+    //border: solid 1px #555555;
+    color: #FFF;
+    margin-top: 5px;
+    padding: 10px 10px 5px 10px;
+    line-height: 1.6em;
+    background: #555555;
+    z-index: 1011;
+    border: 1px solid #000000;
+  }
+}
+

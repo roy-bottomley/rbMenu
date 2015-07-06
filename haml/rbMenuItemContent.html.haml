@@ -1,0 +1,11 @@
+/ rb-Nav Angular Responsive Mobile Menu v1.0
+/ (c) 2015 Roy Bottomley
+/ licensed under MIT
+%img.rb-nav_image{'ng-if'=>'!!line.img_url', 'ng-src'=>'{{line.img_url}}'}
+%span{'ng-class' => 'line.class'}
+  {{line.text}}
+  .rb-nav_tooltip{'ng-if' => "line.hovering && line.tooltip && !line.sub_menu"}
+    .rb-nav_tooltip-arrow
+    .rb-nav_tooltip-text
+      {{line.tooltip}}
+%span.rb-nav_arrow{'ng-if'=>'line.sub_menu && !forceOpen', 'ng-bind-html'=>"getMenuSymbol(line)"}

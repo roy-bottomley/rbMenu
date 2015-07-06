@@ -1,0 +1,33 @@
+/ rb-Nav Angular Responsive Mobile Menu v1.0
+/ (c) 2015 Roy Bottomley
+/ licensed under MIT
+.rb-nav_menu{'ng-if'=>'!showAsTopbar'}
+  .rb-nav_btn_holder{'ng-hide'=>'hideDropdownButton','ng-click' => 'lineClicked(menu)','ng-class' => "{'rb-nav_left-btn-holder' : onLeft, 'rb-nav_right-btn-holder' : !onLeft}"}
+    .rb-nav_btn-default{'ng-if' => '!hasImage'}
+      %span.rb-nav_icon-bar
+      %span.rb-nav_icon-bar
+      %span.rb-nav_icon-bar
+    .rb-nav_btn-img{'ng-if' => 'hasImage'}
+      %img{'ng-src' => '{{buttonImage}}'}
+  #dd-holder.rb-nav_menu_dropdown_holder{'off-click'=>"offclickCloseLine()", 'off-click-if'=>"isOpen(menu)", 'off-click-filter'=>"'.rb-nav_menu'"}
+    .rb-nav_menu_dropdown{'ng-class' => "{'rb-nav_left-dropdown' : onLeft, 'rb-nav_right-dropdown' : !onLeft}", 'ng-style'=>'style'}
+      .any{'ng-if' => 'isOpen(menu)', 'ng-class' => "{'dropdown-animate-left' : onLeft, 'dropdown-animate-right' : !onLeft}"}
+        %ul{'ng-repeat'=> "menu_lines in [menu.sub_menu] | orderBy:'sortKey'", 'ng-include' => "'rbMenu/rbMenuLine.html'"}
+.rb-nav_top-bar-holder{'ng-if'=>'showAsTopbar && images_not_loaded < 1', 'ng-style'=>'style'}
+  %nav
+    %ul.rb-nav_float-left{'ng-if'=> 'hasTopLeftItems()'}
+      %li{'ng-repeat'=> 'line in menu.sub_menu',  'ng-if' => 'line.left', }
+        .any{'ng-repeat'=> 'line in [line]', 'ng-include' => "'rbMenu/rbMenuLi.html'"}
+        .rb-nav_topbar-dropdown.topbar-animate{'ng-if' => 'isOpen(line)'}
+          %ul{'ng-repeat'=> 'menu_lines in [line.sub_menu]', 'ng-include' => "'rbMenu/rbMenuLine.html'"}
+    %ul.rb-nav_center
+      %li{'ng-repeat'=> 'line in menu.sub_menu',   'ng-if' => '!line.right && !line.left', }
+        .any{'ng-repeat'=> 'line in [line]', 'ng-include' => "'rbMenu/rbMenuLi.html'"}
+        .rb-nav_topbar-dropdown.topbar-animate{'ng-if' => 'isOpen(line)'}
+          %ul{'ng-repeat'=> 'menu_lines in [line.sub_menu]', 'ng-include' => "'rbMenu/rbMenuLine.html'"}
+      .stretch
+    %ul.rb-nav_float-right
+      %li{'ng-repeat'=> 'line in menu.sub_menu',  'ng-if' => 'line.right', }
+        .any{'ng-repeat'=> 'line in [line]', 'ng-include' => "'rbMenu/rbMenuLi.html'"}
+        .rb-nav_topbar-dropdown.topbar-animate{'ng-if' => 'isOpen(line)'}
+          %ul{'ng-repeat'=> 'menu_lines in [line.sub_menu]', 'ng-include' => "'rbMenu/rbMenuLine.html'"}

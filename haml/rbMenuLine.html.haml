@@ -1,0 +1,8 @@
+/ rb-Nav Angular Responsive Mobile Menu v1.0
+/ (c) 2015 Roy Bottomley
+/ licensed under MIT
+%li{'ng-repeat'=> "line in menu_lines | orderBy:'sortKey'", 'ng-class' => "{'rb-nav_divider' : !!line.divider}", 'ng-hide' => 'line.hide'}
+  .any{'ng-repeat'=> 'line in [line]', 'ng-include' => "'rbMenu/rbMenuLi.html'"}
+  .rb-nav_sub-menu{'ng-if' => 'isOpen(line)', 'ng-class' =>"{'topbar-animate': showAsTopbar, 'dropdown-animate-left':!showAsTopbar && onLeft, 'dropdown-animate-right':!showAsTopbar && !onLeft}"}
+    %ul{'ng-repeat'=> "menu_lines in [line.sub_menu] | orderBy:'sortKey'", 'ng-include' => "'rbMenu/rbMenuLine.html'"}
+

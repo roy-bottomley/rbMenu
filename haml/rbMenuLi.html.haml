@@ -1,0 +1,19 @@
+/ rb-Nav Angular Responsive Mobile Menu v1.0
+/ (c) 2015 Roy Bottomley
+/ licensed under MIT
+.any{'ng-if'=>'(line.sub_menu && !forceOpen) || line.menu_action', 'ng-click' => 'lineClicked(line)'}
+  %a.rb-nav-menu-item{'ng-if'=>'!!line.menu_action.url', 'ng-attr-href' => "{{line.menu_action.url}}",
+                      'ng-mouseenter' => 'line.hovering = true',  'ng-mouseleave' => 'line.hovering = false',
+                      'ng-repeat'=> "lines in [line]", 'ng-include' => "'rbMenu/rbMenuItemContent.html'"}
+
+  %a.rb-nav-menu-item{'ng-if'=>'!!line.menu_action.ui_sref',  'ui-sref' => "{{line.menu_action.ui_sref}}",
+                      'ng-mouseenter' => 'line.hovering = true',  'ng-mouseleave' => 'line.hovering = false',
+                      'ng-repeat'=> "lines in [line]", 'ng-include' => "'rbMenu/rbMenuItemContent.html'"}
+
+  %a.rb-nav-menu-item{'ng-if'=>'!line.menu_action.url && !line.menu_action.ui_sref',
+                      'ng-mouseenter' => 'line.hovering = true',  'ng-mouseleave' => 'line.hovering = false',
+                      'ng-repeat'=> "lines in [line]", 'ng-include' => "'rbMenu/rbMenuItemContent.html'"}
+
+.rb-nav-menu-item{'ng-if'=>'!(line.sub_menu || line.menu_action) || (forceOpen && line.sub_menu && !line.menu_action)',
+                  'ng-mouseenter' => 'line.hovering = true',  'ng-mouseleave' => 'line.hovering = false',
+                  'ng-repeat'=> "lines in [line]", 'ng-include' => "'rbMenu/rbMenuItemContent.html'"}
