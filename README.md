@@ -1,6 +1,6 @@
 # rbMenu
 An AngularJS directive that provides a data driven menu which can be configured as a horizontal, vertical or responsive menu of any depth.
-This is written for my own use as I couldn't find a suitable menu directive for my needs. It allows me to keep menu configerations for users in the database and can be used as a horizontal vertical or rsponsive menu with several configuration options. Its released under MIT license so feel free to use if its helpful to you.
+This is written for my own use as I couldn't find a suitable menu directive for my needs. It allows menu configurations to be kept in the database and can be used as a horizontal, vertical or responsive menu with several configuration options. Its released under MIT license so feel free to use if its helpful to you.
 ## Demo
 - [A demo page](http://www.roy-bottomley.com/demos/rbmenu)
 - [in action in an application](http://www.tacticalfootball.com/clubs/1122)
